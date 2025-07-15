@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/premium-photo/colorful-background-with-yellow-blue-geometric-pattern_481527-25413.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 20px;
+            gap: 50px;
+        }
+        .box {
+            background: rgb(218, 236, 236);
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .box h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        select, input {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 30px;
+            font-size: large;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        .button-container {
+            text-align: center;
+            padding:5px 40px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left side: Camera feed -->
+        <div class="box">
+            <h1>Emotion Detection</h1>
+            <img src="{{ url_for('video_feed') }}" alt="Video Feed">
+        </div>
+        
+        <!-- Right side: Form inputs -->
+        <div class="box">
+            <h1>Personality Prediction</h1>
+            <form method="POST">
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <select name="gender">
+                        <option value="1">Female</option>
+                        <option value="2">Male</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Age:</label>
+                    <input type="number" name="age" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Openness:</label>
+                    <input type="number" name="openness" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Neuroticism:</label>
+                    <input type="number" name="neuroticism" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Conscientiousness:</label>
+                    <input type="number" name="conscientiousness" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Agreeableness:</label>
+                    <input type="number" name="agreeableness" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Extraversion:</label>
+                    <input type="number" name="extraversion" step="0.1" required>
+                </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button type="submit">Predict</button>
+    </div>
+</form>
+</body>
+</html>

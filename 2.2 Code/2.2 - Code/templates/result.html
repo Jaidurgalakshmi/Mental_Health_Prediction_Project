@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(236, 191, 191);
+            text-align: center;
+        }
+        .result-container {
+            margin-top: 50px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: left;
+            border-radius: 10px;
+            width: 60%;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Results</h1>
+    <div class="result-container">
+        <p><strong>Report   :</strong> {{ emotion+ " and "+personality }}</p>
+        <p><strong>Tips:</strong> 
+            {% if emotion == 'anger' %}
+                Take deep breaths and practice mindfulness. Engage in physical activity to release tension.
+            {% elif emotion == 'contempt' %}
+                Reflect on your feelings and try to understand others’ perspectives. Practice empathy.
+            {% elif emotion == 'disgust' %}
+                Identify the trigger and consider addressing it positively. Relax and reframe your thoughts.
+            {% elif emotion == 'fear' %}
+                Focus on grounding techniques. Stay present and analyze if the fear is rational.
+            {% elif emotion == 'happy' %}
+                Continue engaging in activities that bring joy and share positivity with others.
+            {% elif emotion == 'neutral' %}
+                Try activities that stimulate interest or creativity to bring more engagement to your life.
+            {% elif emotion == 'sad' %}
+                Talk to a friend or loved one. Engage in activities that lift your mood.
+            {% elif emotion == 'surprise' %}
+                Embrace the moment and consider how to use it positively.
+            {% else %}
+                No specific prevention available.
+            {% endif %}
+        </p>
+        <p>
+            {% if personality == 'dependable' %}
+                Stay consistent in your efforts and be open to new opportunities.
+            {% elif personality == 'serious' %}
+                Balance your seriousness with activities that bring joy and relaxation.
+            {% elif personality == 'responsible' %}
+                Keep up the good work, but don’t forget to delegate and take breaks.
+            {% elif personality == 'extraverted' %}
+                Use your outgoing nature to build meaningful connections.
+            {% elif personality == 'lively' %}
+                Channel your energy into creative or productive activities.
+            {% else %}
+                No specific suggestion available.
+            {% endif %}
+        </p>
+    </div>
+    <div class="result-container">
+        <p><strong>Video Recommendations:</strong></p>
+        {% if videos %}
+            <div class="video-grid">
+                {% for video in videos %}
+                    <div class="video-item">
+                        <iframe 
+                            width="100%" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/{{ video.video_id }}" 
+                            title="{{ video.title }}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                        <p>{{ video.title }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No recommendations available at this moment.</p>
+        {% endif %}
+    </div>
+    
+    <style>
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .video-item {
+            width: 300px;
+        }
+        .video-item iframe {
+            border-radius: 8px;
+        }
+    </style>
+    
+    
+    <div>
+        <a class="back-link" href="{{ url_for('home') }}">Go Back to Home</a>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 30px;
+            margin: 3px;
+            padding: 50px;
+            background-image: url('https://i.pinimg.com/originals/65/c2/13/65c2132c5fc02dbfa6543eef7447829e.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Navigating Mental Health</h1>
+    <div style="text-align: center;">
+        <img src="https://info.ehl.edu/hubfs/The-role-of-emotion-in-change.jpg" alt="Home Image" style="width: 800px; margin: 20px;">
+        <form action="{{ url_for('prediction') }}" method="get">
+            <button type="submit">Go to Prediction</button>
+        </form>
+    </div>
+</body>
+</html>
